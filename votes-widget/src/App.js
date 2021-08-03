@@ -3,7 +3,8 @@ import Votescard from "./components/VotesCard";
 function App() {
   return (
     <div>
-      <Votescard/> 
+      <h2 style={{ fontWeight: 100 }}>Previous Rulings</h2>
+      <Votescard />
     </div>
   );
 }
