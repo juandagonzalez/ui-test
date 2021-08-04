@@ -13,7 +13,7 @@ export default function Gaugebar(props) {
       style={{
         display: "flex",
         position: "absolute",
-        bottom: 3,
+        bottom: 0,
         width: "100%",
         justifyContent: "center",
         margin: "auto",
