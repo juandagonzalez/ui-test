@@ -35,7 +35,6 @@ export function CelebritiesProvider({ children }) {
           id: doc.id,
         };
         celebrities.push(celebrity);
-        console.log(doc.data());
       });
       setCelebrities(celebrities);
       setLoading(false);
