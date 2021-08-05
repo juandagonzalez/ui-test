@@ -3,11 +3,12 @@ import React from "react";
 export default function Textcontent(props) {
   const cardSubtitles = {
     overflow: "hidden",
+    whiteSpace: "nowrap",
     textOverflow: "ellipsis",
     height: "40px",
     lineHeight: "20px",
     marginInline: "50px",
-    marginTop: "5px",
+    marginBlock: 0,
     color: "white",
   };
 
@@ -15,21 +16,20 @@ export default function Textcontent(props) {
     <>
       <h1
         style={{
-          display: "inline",
           color: "white",
           fontWeight: 100,
-          marginLeft: "10px",
+          marginLeft: "50px",
+          height: "100%",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          marginBlock: 0,
+          marginBottom: "10px",
         }}
       >
-        Kanye West
+        {props.name}
       </h1>
 
-      <p style={cardSubtitles}>
-        Lorem ipsum dolor sit amet consectetur adipiscing, elit accumsan nam
-        dapibus sem etiam facilisis, cubilia ornare vel aenean nisl. Auctor
-        praesent ultricies iaculis himenaeos risus ornare, habitant platea
-        litora aptent nulla rutrum, interdum et nec lacus fusce.
-      </p>
+      <p style={cardSubtitles}>{props.text}</p>
     </>
   );
 }

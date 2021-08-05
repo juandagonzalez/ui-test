@@ -11,6 +11,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+import { useCelebrities } from "./contexts/CelebritiesContext";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -25,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
   },
   grid: {
     width: "100%",
+    justifyContent: "center",
+    margin: "auto",
     [theme.breakpoints.down("xs")]: {
       display: "none",
     },
@@ -49,6 +52,8 @@ function App() {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [listOrGrid, setListOrGrid] = useState("Grid");
+
+  const { celebrities } = useCelebrities();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -143,49 +148,50 @@ function App() {
       </Menu>
       <div className={classes.scroll}>
         <HorizontalScroll reverseScroll={true}>
-          <div style={{ marginRight: "15px", width: "400px" }}>
-            <Votescard />
-          </div>
-          <div style={{ marginRight: "15px", width: "400px" }}>
-            <Votescard />
-          </div>
-          <div style={{ marginRight: "15px", width: "400px" }}>
-            <Votescard />
-          </div>
+          {celebrities &&
+            celebrities.map((celebrity) => {
+              return (
+                <div
+                  style={{ marginRight: "15px", width: "400px" }}
+                  key={celebrity.id}
+                >
+                  <Votescard
+                    celebId={celebrity.id}
+                    celebrity={celebrity.data}
+                  />
+                </div>
+              );
+            })}
         </HorizontalScroll>
       </div>
+
       {listOrGrid === "Grid" ? (
-        <Grid container spacing={2} className={classes.grid}>
-          <Grid item>
-            <Votescard />
-          </Grid>
-          <Grid item>
-            <Votescard />
-          </Grid>
-          <Grid item>
-            <Votescard />
-          </Grid>
-          <Grid item>
-            <Votescard />
-          </Grid>
-          <Grid item>
-            <Votescard />
-          </Grid>
-          <Grid item>
-            <Votescard />
-          </Grid>
+        <Grid container spacing={3} className={classes.grid}>
+          {celebrities &&
+            celebrities.map((celebrity) => {
+              return (
+                <Grid item key={celebrity.id}>
+                  <Votescard
+                    celebId={celebrity.id}
+                    celebrity={celebrity.data}
+                  />
+                </Grid>
+              );
+            })}
         </Grid>
       ) : (
         <>
-          <div style={{ marginBottom: "10px" }}>
-            <Voteslist />
-          </div>
-          <div style={{ marginBottom: "10px" }}>
-            <Voteslist />
-          </div>
-          <div style={{ marginBottom: "10px" }}>
-            <Voteslist />
-          </div>
+          {celebrities &&
+            celebrities.map((celebrity) => {
+              return (
+                <div style={{ marginBottom: "10px" }} key={celebrity.id}>
+                  <Voteslist
+                    celebId={celebrity.id}
+                    celebrity={celebrity.data}
+                  />
+                </div>
+              );
+            })}
         </>
       )}
     </div>

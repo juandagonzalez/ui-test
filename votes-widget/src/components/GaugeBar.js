@@ -8,6 +8,10 @@ export default function Gaugebar(props) {
     fontWeight: 300,
   };
 
+  const totalVotes = props.positive + props.negative;
+  const positivePercent = ((props.positive / totalVotes) * 100).toFixed(1);
+  const negativePercent = ((props.negative / totalVotes) * 100).toFixed(1);
+
   return (
     <div
       style={{
@@ -24,22 +28,22 @@ export default function Gaugebar(props) {
         style={{
           padding: "8px",
           background: "rgba(60, 187, 180, .6)",
-          width: "25%",
+          width: `${positivePercent}%`,
           textAlign: "left",
         }}
       >
         <img style={{ marginRight: "5px" }} src={ThumbsUp} alt="thumbs up" />
-        <h3 style={percentagesText}>25.5%</h3>
+        <h3 style={percentagesText}>{positivePercent}%</h3>
       </div>
       <div
         style={{
           padding: "8px",
           background: "rgba(249, 173, 29, .6)",
-          width: "74.5%",
+          width: `${negativePercent}%`,
           textAlign: "right",
         }}
       >
-        <h3 style={percentagesText}>74.5%</h3>
+        <h3 style={percentagesText}>{negativePercent}%</h3>
         <img style={{ marginLeft: "5px" }} src={ThumbsDown} alt="thumbs down" />
       </div>
     </div>
