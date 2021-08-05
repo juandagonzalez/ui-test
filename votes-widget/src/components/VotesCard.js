@@ -23,14 +23,14 @@ const thumbsUpBtn = {
   border: "none",
   background: "rgb(60, 187, 180)",
   position: "absolute",
-  bottom: "200px",
+  bottom: "210px",
 };
 
 const thumbsDownBtn = {
   border: "none",
   background: "rgb(249, 173, 29)",
   position: "absolute",
-  bottom: "200px",
+  bottom: "210px",
 };
 
 export default function Votescard(props) {

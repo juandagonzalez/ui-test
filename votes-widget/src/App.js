@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     background: "white",
     border: "3px solid black",
     right: 0,
-    top: "10px",
+    bottom: 10,
     display: "inline",
     [theme.breakpoints.down("xs")]: {
       display: "none",
@@ -64,6 +64,7 @@ function App() {
       <div
         style={{
           paddingBlock: "20px",
+          position: "relative",
         }}
       >
         <p
@@ -83,7 +84,6 @@ function App() {
           <div
             style={{
               display: "inline",
-              margin: "auto",
               fontSize: "1.2rem",
               paddingInline: "20px",
             }}

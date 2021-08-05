@@ -85,7 +85,7 @@ export default function Votecontrols(props) {
             style={{
               display: "flex",
               alignItems: "center",
-              marginLeft: "140px",
+              marginLeft: "100px",
             }}
           >
             {liked ? (
